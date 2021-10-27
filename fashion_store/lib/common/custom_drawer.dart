@@ -96,7 +96,31 @@ class _CustomdrawerState extends State<Customdrawer> {
             //   context,
             //   MaterialPageRoute(builder: (context) => YoutubeVideoPlayer()),
             // );
-            // Navigator.pop(context);
+            CommonRoutePage().goToOrderHistoryScreen(context);
+          },
+        ),
+        DrawerItem(
+          title: 'Account',
+          leadingWidget: Image.asset(Images.ic_order_history),
+          callback: () {
+            //widget?.callBack?.call(1);
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => YoutubeVideoPlayer()),
+            // );
+            CommonRoutePage().goToAccountScreen(context);
+          },
+        ),
+        DrawerItem(
+          title: 'Notification settings',
+          leadingWidget: Image.asset(Images.ic_order_history),
+          callback: () {
+            //widget?.callBack?.call(1);
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => YoutubeVideoPlayer()),
+            // );
+            CommonRoutePage().goToNotificationSettingScreen(context);
           },
         ),
         DrawerItem(
@@ -109,6 +133,7 @@ class _CustomdrawerState extends State<Customdrawer> {
             );*/
             // widget?.callBack?.call(2);
             // Navigator.pop(context);
+            CommonRoutePage().goToOrderTrackingScreen(context);
           },
         ),
         DrawerItem(
@@ -119,6 +144,17 @@ class _CustomdrawerState extends State<Customdrawer> {
               context,
               MaterialPageRoute(builder: (context) => SearchList()),
             );*/
+          },
+        ),
+        DrawerItem(
+          title: 'Contact Us',
+          leadingWidget: Image.asset(Images.ic_settings),
+          callback: () {
+            /*Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SearchList()),
+            );*/
+            CommonRoutePage().goToContactUsScreen(context);
           },
         ),
         DrawerItem(

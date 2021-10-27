@@ -1,3 +1,4 @@
+import 'package:fashion_store/common/common_route.dart';
 import 'package:fashion_store/utils/app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -75,9 +76,10 @@ class CheckOutScreenState extends State<CheckOutScreen> {
   cartList(){
     return Container(
       margin: EdgeInsets.only(top: 10),
-      height: MediaQuery.of(context).size.height/3,
+     // height: MediaQuery.of(context).size.height/3,
       child: ListView.builder(
-        physics: AlwaysScrollableScrollPhysics(),
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         itemCount: product_list.length,
         itemBuilder: (context, index) {
@@ -321,14 +323,19 @@ class CheckOutScreenState extends State<CheckOutScreen> {
           ),
         ),
 
-        Container(
-          height: 40,
-          width: MediaQuery.of(context).size.width/4,
-          decoration: BoxDecoration(
-              color: AppColors.colorDarkBlue
-          ),
-          child: Center(
-            child: Text("Proceed", style: TextStyle(color: Colors.white),),
+        GestureDetector(
+          onTap: (){
+            CommonRoutePage().goToShippingDetailScreen(context);
+          },
+          child: Container(
+            height: 40,
+            width: MediaQuery.of(context).size.width/4,
+            decoration: BoxDecoration(
+                color: AppColors.colorDarkBlue
+            ),
+            child: Center(
+              child: Text("Proceed", style: TextStyle(color: Colors.white),),
+            ),
           ),
         ),
       ],
