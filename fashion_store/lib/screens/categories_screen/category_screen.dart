@@ -59,7 +59,7 @@ class CategoryScreenState extends State<CategoryScreen> {
   categoryList(){
     return GestureDetector(
       onTap: (){
-        CommonRoutePage().goToProductCollectionScreen(context);
+        CommonRoutePage().goToProductCollectionScreen();
       },
       child: Container(
         margin: EdgeInsets.only(top: 10, left: 5, right: 5),

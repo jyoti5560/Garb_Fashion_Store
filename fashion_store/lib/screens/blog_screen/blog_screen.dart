@@ -41,7 +41,7 @@ class _BlogScreenState extends State<BlogScreen> {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: (){
-                  CommonRoutePage().goToBlogDetailScreen(context);
+                  CommonRoutePage().goToBlogDetailScreen();
                 },
                 child: Container(
                   padding: EdgeInsets.only(left: 5, right: 5),

@@ -18,7 +18,7 @@ class SplashScreenState extends State<SplashScreen> {
     _mockCheckForSession().then((status) {
       if (status) {
         gotoNextPage();
-        //  goToLoginSignup(context);
+
       } else {}
     });
   }
@@ -60,6 +60,6 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   gotoNextPage() async {
-      CommonRoutePage().goToSignIn(context);
+      CommonRoutePage().goToSignIn();
   }
 }

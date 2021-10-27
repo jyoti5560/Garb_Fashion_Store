@@ -3,15 +3,19 @@ import 'package:fashion_store/utils/app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  LoginScreenState createState() => LoginScreenState();
+  SignInScreenState createState() => SignInScreenState();
 }
 
-class LoginScreenState extends State<LoginScreen> {
+class SignInScreenState extends State<SignInScreen> {
   bool? checkBoxValue = false;
+
+  GlobalKey<FormState> formKey = GlobalKey();
+  TextEditingController userNameFieldController = TextEditingController();
+  TextEditingController passwordFieldController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +31,7 @@ class LoginScreenState extends State<LoginScreen> {
       body: Center(
         child: SingleChildScrollView(
           child: Form(
+            key: formKey,
             child: Container(
               margin: EdgeInsets.only(left: 30, right: 30),
               child: Column(
@@ -40,7 +45,7 @@ class LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 10,),
                   passwordTextField(),
                   SizedBox(height: 10,),
-                  remeberMeText(),
+                  rememberMeText(),
                   SizedBox(height: 10,),
                   loginButton(),
                   SizedBox(height: 20,),
@@ -64,24 +69,21 @@ class LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  userNameTextField(){
-    return Container(
-      height: 40,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey)
-      ),
-      child: TextFormField(
-       // controller: loginEmailController,
-        decoration: InputDecoration(
-            hintStyle: TextStyle(fontSize: 18),
-          contentPadding: EdgeInsets.only(left: 10, bottom: 5),
-          border: InputBorder.none
-        ),
-        /*onSaved: (String val) {
-          email = val;
-        },*/
-        //validator: validateEmail,
+  userNameTextField() {
+    return TextFormField(
+      controller: userNameFieldController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Field should not be Empty';
+        }
+      },
+      decoration: InputDecoration(
+        isDense: true,
+        contentPadding: EdgeInsets.all(10),
+        enabledBorder: OutlineInputBorder(),
+        errorBorder: OutlineInputBorder(),
+        focusedErrorBorder: OutlineInputBorder(),
+        focusedBorder: OutlineInputBorder(),
       ),
     );
   }
@@ -93,27 +95,26 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   passwordTextField(){
-    return Container(
-      height: 40,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey)
-      ),
-      child: TextFormField(
-        // controller: loginEmailController,
-        decoration: InputDecoration(
-            //hintStyle: TextStyle(fontSize: 18),
-            border: InputBorder.none
-        ),
-        /*onSaved: (String val) {
-          email = val;
-        },*/
-        //validator: validateEmail,
+    return TextFormField(
+      controller: passwordFieldController,
+      validator: (value){
+        if(value!.isEmpty){
+          return 'Field should not be Empty';
+        }
+      },
+      obscureText: true,
+      decoration: InputDecoration(
+        isDense: true,
+        contentPadding: EdgeInsets.all(10),
+        enabledBorder: OutlineInputBorder(),
+        errorBorder: OutlineInputBorder(),
+        focusedErrorBorder: OutlineInputBorder(),
+        focusedBorder: OutlineInputBorder(),
       ),
     );
   }
 
-  remeberMeText(){
+  rememberMeText(){
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -146,7 +147,9 @@ class LoginScreenState extends State<LoginScreen> {
   loginButton(){
     return GestureDetector(
       onTap: (){
-        CommonRoutePage().goToDashBoardPage(context);
+        if(formKey.currentState!.validate()){
+          CommonRoutePage().goToDashBoardPage();
+        }
       },
       child: Container(
         height: 40,
@@ -214,7 +217,7 @@ class LoginScreenState extends State<LoginScreen> {
           SizedBox(width: 5,),
           GestureDetector(
             onTap: (){
-              CommonRoutePage().goToSignUp(context);
+              CommonRoutePage().goToSignUp();
             },
             child: Container(
                 child: Text("Sign Up",

@@ -86,7 +86,7 @@ class HomeScreenState extends State<HomeScreen> {
             // Image.asset(Images.ic_notification),
           ],
         ),
-        drawer: Customdrawer(),
+        drawer: CustomDrawer(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -231,7 +231,7 @@ class HomeScreenState extends State<HomeScreen> {
              children: [
                GestureDetector(
                  onTap: (){
-                   CommonRoutePage().goToCategory(context);
+                   CommonRoutePage().goToCategory();
                  },
                  child: Container(
                    height: 80,width: 80,
@@ -371,7 +371,7 @@ class HomeScreenState extends State<HomeScreen> {
    recommendedProductList(){
       return GestureDetector(
         onTap: (){
-          CommonRoutePage().goToProductDetail(context);
+          CommonRoutePage().goToProductDetail();
         },
         child: Container(
           margin: EdgeInsets.only(left: 10, right: 10,top: 5),

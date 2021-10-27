@@ -13,7 +13,7 @@ enum BestTutorSite {Cash_On_Delivery, debit, check, paypal }
 
 class CheckOutScreenState extends State<CheckOutScreen> {
 
-  List<String> product_list = [
+  List<String> productList = [
     Images.ic_cart1,
     Images.ic_cart2,
   ];
@@ -81,7 +81,7 @@ class CheckOutScreenState extends State<CheckOutScreen> {
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
-        itemCount: product_list.length,
+        itemCount: productList.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -118,7 +118,7 @@ class CheckOutScreenState extends State<CheckOutScreen> {
                               ),
                             ],
                           ),
-                          child: Image.asset(product_list[index]),
+                          child: Image.asset(productList[index]),
                         ),
                         SizedBox(width: 10,),
                         Expanded(
@@ -159,7 +159,7 @@ class CheckOutScreenState extends State<CheckOutScreen> {
                                         child: Center(
                                           child: Text(
                                             "-",
-                                            style: TextStyle(color: Colors.black, fontSize: 23),
+                                            style: TextStyle(color: Colors.black, /*fontSize: 23*/),
                                           ),
                                         ),
                                       ),
@@ -188,7 +188,7 @@ class CheckOutScreenState extends State<CheckOutScreen> {
                                         child: Center(
                                             child: Text("+",
                                                 style:
-                                                TextStyle(color: Colors.black, fontSize: 22))),
+                                                TextStyle(color: Colors.black, /*fontSize: 22*/))),
                                       ),
                                     ),
                                   ),
@@ -325,7 +325,7 @@ class CheckOutScreenState extends State<CheckOutScreen> {
 
         GestureDetector(
           onTap: (){
-            CommonRoutePage().goToShippingDetailScreen(context);
+            CommonRoutePage().goToShippingDetailScreen();
           },
           child: Container(
             height: 40,

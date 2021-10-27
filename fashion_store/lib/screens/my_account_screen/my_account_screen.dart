@@ -299,7 +299,7 @@ class _MyAccountState extends State<MyAccount> {
                   GestureDetector(
                     onTap: (){
                       if(index == 2){
-                        CommonRoutePage().goToNotificationScreen(context);
+                        CommonRoutePage().goToNotificationScreen();
                       }
 
                     },

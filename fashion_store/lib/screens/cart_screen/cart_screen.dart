@@ -10,7 +10,7 @@ class CartScreen extends StatefulWidget {
 }
 
 class CartScreenState extends State<CartScreen> {
-  List<String> product_list = [
+  List<String> productList = [
     Images.ic_cart1,
     Images.ic_cart2,
     Images.ic_cart3,
@@ -21,40 +21,36 @@ class CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        //iconTheme: IconThemeData(color: Colors.black),
-        centerTitle: true,
-        title: Text("Cart", style: TextStyle(color: Colors.black),),
-      ),
-      body: Container(
-       // alignment: Alignment.topRight,
-        child: Column(
-          children: [
-            cartList(),
-            checkOutButton()
-          ],
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          //iconTheme: IconThemeData(color: Colors.black),
+          centerTitle: true,
+          title: Text(
+            "Cart",
+            style: TextStyle(color: Colors.black),
+          ),
         ),
-
-      )
-    );
+        body: Container(
+          // alignment: Alignment.topRight,
+          child: Column(
+            children: [cartList(), checkOutButton()],
+          ),
+        ));
   }
 
-  cartList(){
+  cartList() {
     return Container(
       margin: EdgeInsets.only(top: 10),
-      height: MediaQuery.of(context).size.height/2.1,
+      height: MediaQuery.of(context).size.height / 2.1,
       child: ListView.builder(
         physics: AlwaysScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
-        itemCount: product_list.length,
+        itemCount: productList.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
-              onTap: () {
-
-              },
+              onTap: () {},
               child: Container(
                 //height: MediaQuery.of(context).size.height/4.2,
                 //width: MediaQuery.of(context).size.width/3,
@@ -71,7 +67,8 @@ class CartScreenState extends State<CartScreen> {
                     ],
                   ),
                   child: Container(
-                    padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                    padding: EdgeInsets.only(
+                        left: 10, right: 10, top: 10, bottom: 10),
                     child: Row(
                       children: [
                         Container(
@@ -84,22 +81,37 @@ class CartScreenState extends State<CartScreen> {
                               ),
                             ],
                           ),
-                          child: Image.asset(product_list[index]),
+                          child: Image.asset(productList[index]),
                         ),
-                        SizedBox(width: 10,),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                                Container(
-                                  child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                                    style: TextStyle(color: Colors.black, fontSize: 16),),
-                                ),
-                              SizedBox(height: 5,),
                               Container(
-                                child: Text("\$20.00", style: TextStyle(color: AppColors.colorDarkBlue),),
+                                child: Text(
+                                  "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 16),
+                                ),
                               ),
-                              SizedBox(height: 5,),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Container(
+                                child: Text(
+                                  "\$20.00",
+                                  style:
+                                      TextStyle(color: AppColors.colorDarkBlue),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
                               Row(
                                 //mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
@@ -120,12 +132,15 @@ class CartScreenState extends State<CartScreen> {
                                               Radius.circular(15),
                                             ),*/
                                             color: Colors.grey
-                                          //border: Border.all(color: Colors.grey)
-                                        ),
+                                            //border: Border.all(color: Colors.grey)
+                                            ),
                                         child: Center(
                                           child: Text(
                                             "-",
-                                            style: TextStyle(color: Colors.black, fontSize: 23),
+                                            style: TextStyle(
+                                              color:
+                                                  Colors.black, /*fontSize: 23*/
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -134,7 +149,8 @@ class CartScreenState extends State<CartScreen> {
                                   Container(
                                     padding: EdgeInsets.only(left: 10),
                                     child: Text("$quant",
-                                        style: TextStyle(color: Colors.black, fontSize: 16)),
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 16)),
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -149,22 +165,22 @@ class CartScreenState extends State<CartScreen> {
                                         decoration: new BoxDecoration(
                                             //borderRadius: BorderRadius.all(Radius.circular(15)),
                                             color: Colors.grey
-                                          //border: Border.all(color: Colors.grey)
-                                        ),
+                                            //border: Border.all(color: Colors.grey)
+                                            ),
                                         child: Center(
                                             child: Text("+",
-                                                style:
-                                                TextStyle(color: Colors.black, fontSize: 22))),
+                                                style: TextStyle(
+                                                  color: Colors
+                                                      .black, /*fontSize: 22*/
+                                                ))),
                                       ),
                                     ),
                                   ),
                                 ],
                               ),
-
                             ],
                           ),
                         )
-
                       ],
                     ),
                   ),
@@ -177,10 +193,10 @@ class CartScreenState extends State<CartScreen> {
     );
   }
 
-  checkOutButton(){
+  checkOutButton() {
     return GestureDetector(
-      onTap: (){
-        CommonRoutePage().goToCheckout(context);
+      onTap: () {
+        CommonRoutePage().goToCheckout();
       },
       child: Container(
         margin: EdgeInsets.only(right: 10),
@@ -188,16 +204,23 @@ class CartScreenState extends State<CartScreen> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              child: Text("Total: \$100.00", style: TextStyle(color: Colors.black, fontSize: 16),),
-            ),
-            SizedBox(width: 10,),
-            Container(
-              height: 35, width: MediaQuery.of(context).size.width/3.4,
-              decoration: BoxDecoration(
-                color: AppColors.colorDarkBlue
+              child: Text(
+                "Total: \$100.00",
+                style: TextStyle(color: Colors.black, fontSize: 16),
               ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 35,
+              width: MediaQuery.of(context).size.width / 3.4,
+              decoration: BoxDecoration(color: AppColors.colorDarkBlue),
               child: Center(
-                child: Text("Checkout", style: TextStyle(color: Colors.white, fontSize: 16),),
+                child: Text(
+                  "Checkout",
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
               ),
             )
           ],
